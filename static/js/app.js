@@ -16,19 +16,36 @@ function fillTable(data){
 // Create the HTML table with 
 fillTable(tableData);
 
-// Create function to filter by a data and fills the HTML table with the results
-function runFilter(){
-    d3.event.preventDefault();
-    var inputElem=d3.select("#datetime").property("value");
-    var filteredData = tableData.filter((sighting) => sighting.datetime === inputElem);
-        fillTable(filteredData);
-    if (filteredData.length===0) {
-        d3.select(".warning").text(`No data in date ${inputElem} found`);
-    }
-}
+// Create a function to filter with multiple criteria
+function runmultiFilter(){
+    var datetime=d3.select("#datetime").property("value").toLowerCase().trim();
+    var city=d3.select("#city").property("value").toLowerCase().trim();
+    var state=d3.select("#state").property("value").toLowerCase().trim();
+    var country=d3.select("#country").property("value").toLowerCase().trim();
+    var shape=d3.select("#shape").property("value").toLowerCase().trim();
+
+    // Create a dictionnary to hold all inputs
+    let inputs={datetime:datetime, city:city, state:state, country:country, shape:shape};
+   
+    // Create a loop to filter depending on entered inputs
+    let filteredTable=data;
+    Object.entries(inputs).forEach(([key,value])=>{
+        if (value!==""){
+            filteredTable=filteredTable.filter((row)=>row[`${key}`]===value)};
+    });
+    var tbody=d3.select("tbody").html("");
+    fillTable(filteredTable);
+    if (filteredTable.length===0) {
+        d3.select(".warning").text(`No data with this criteria found.`)};
+};
+
+
+// Reset to default
+function reset (){
+        location.reload();
+};
+
 
 // Run the filter on click
-d3.selectAll("#filter-btn").on("click",runFilter);
-
-
-
+d3.select("#filter-btn").on("click",runmultiFilter);
+d3.select("#reset-btn").on("click",reset);
