@@ -1,1 +1,1 @@
-# JAVA Script Challenge
+# Java Script Challenge
