@@ -1,13 +1,13 @@
 // from data.js
-var tableData = data;
+let tableData = data;
 
 // Create function to fill the html table with a given table value
 function fillTable(data){
-    var tbody=d3.select("tbody").html("");
+    let tbody=d3.select("tbody").html("");
     data.forEach ((element)=>{
-        var row=tbody.append("tr");
+        let row=tbody.append("tr");
         Object.values(element).forEach((value)=>{
-            var cell=row.append("td");
+            let cell=row.append("td");
             cell.text(value);
         });
     });
@@ -18,11 +18,12 @@ fillTable(tableData);
 
 // Create a function to filter with multiple criteria
 function runmultiFilter(){
-    var datetime=d3.select("#datetime").property("value").toLowerCase().trim();
-    var city=d3.select("#city").property("value").toLowerCase().trim();
-    var state=d3.select("#state").property("value").toLowerCase().trim();
-    var country=d3.select("#country").property("value").toLowerCase().trim();
-    var shape=d3.select("#shape").property("value").toLowerCase().trim();
+    d3.event.preventDefault();
+    let datetime=d3.select("#datetime").property("value").toLowerCase().trim();
+    let city=d3.select("#city").property("value").toLowerCase().trim();
+    let state=d3.select("#state").property("value").toLowerCase().trim();
+    let country=d3.select("#country").property("value").toLowerCase().trim();
+    let shape=d3.select("#shape").property("value").toLowerCase().trim();
 
     // Create a dictionnary to hold all inputs
     let inputs={datetime:datetime, city:city, state:state, country:country, shape:shape};
@@ -33,7 +34,7 @@ function runmultiFilter(){
         if (value!==""){
             filteredTable=filteredTable.filter((row)=>row[`${key}`]===value)};
     });
-    var tbody=d3.select("tbody").html("");
+    let tbody=d3.select("tbody").html("");
     fillTable(filteredTable);
     if (filteredTable.length===0) {
         d3.select(".warning").text(`No data with this criteria found.`)};
@@ -48,4 +49,6 @@ function reset (){
 
 // Run the filter on click
 d3.select("#filter-btn").on("click",runmultiFilter);
+
+//Reload the page
 d3.select("#reset-btn").on("click",reset);
