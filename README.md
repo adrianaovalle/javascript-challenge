@@ -1,7 +1,7 @@
 # Java Script Challenge
 
 ## Description
-This code will create a table dynamically based upon a dataseto of all of the eye-witness reports of Extraterrestrial Sites.
+This code will create a table dynamically based upon a dataset of all of the eye-witness reports of Extraterrestrial Sites. The dataset is also searcheable depending on user's  criteria.
 
 ## Level 1
 * Create a basic HTML web page 
