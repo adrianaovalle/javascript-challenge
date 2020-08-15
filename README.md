@@ -14,4 +14,4 @@ This code will create a table dynamically based upon a dataset of all of the eye
 
 ## Level 2
 * Using multiple input tags, JavaScript code filters and search for UFO sightings using the following criteria based on the table columns: date/time, city, state, country, shape.
-* <b> The resulting site for level 2 code can be seen at: https://adrianaovalle.github.io/javascript-challenge/ </b>
+* <b> The resulting web page for level 2 code can be seen at: https://adrianaovalle.github.io/javascript-challenge/ </b>
