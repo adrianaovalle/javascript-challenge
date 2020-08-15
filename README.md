@@ -1,5 +1,8 @@
 # Java Script Challenge
 
+![Figure1](UFO-level-2/static/images/nasa.jpg)
+
+
 ## Description
 This code will create a table dynamically based upon a dataset of all of the eye-witness reports of Extraterrestrial Sites. The dataset is also searcheable depending on user's  criteria.
 
